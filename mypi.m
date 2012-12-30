@@ -2,19 +2,19 @@ function [est,t,name] = mypi(N)
 %MYPI compares several computational methods for estimating pi
 %
 %USAGE
-%   mypi uses 20 terms or iterations of variety of computation methods to
+%   mypi uses 20 terms or iterations of various computational methods to
 %   estimate pi to demonstrate their convergence properties and prints the
 %   results to the screen.
 %
 %   mypi(N) uses N terms or iterations instead of the default, 20.
 %
-%   ESTIMATE = mypi(N) returns a vector of estimates of pi.
+%   ESTIMATE = mypi(...) returns a vector of estimates of pi.
 %
-%   [ESTIMATE,TIMEELAPSED] = mypi(N) additionally returns the a vector of 
-%   time required to arrive at the returned estimates.
+%   [ESTIMATE,TIMEELAPSED] = mypi(...) additionally returns the a vector 
+%   of time required to arrive at the returned estimates.
 %
-%   [ESTIMATE,TIMEELAPSED,METHODNAME] = mypi(N) additionally returns a cell
-%   array of the names of the methods uses to arrive at the returned
+%   [ESTIMATE,TIMEELAPSED,METHODNAME] = mypi(...) additionally returns a 
+%   cell array of the names of the methods uses to arrive at the returned
 %   estimates.
 %
 %COMPUTATIONAL METHODS
@@ -49,14 +49,15 @@ function [est,t,name] = mypi(N)
 %   Zeta(2) = pi^2/6, so we can truncate this series at n = N to
 %   approximate.
 %
-% # Zeta(4)
+% # Zeta(4) = pi^4/90, so we can truncate the series at n = N to
+%   approximate.
 %
-% # Zeta(10)
+% # Zeta(10) = pi^10/93555, so we can truncate the series at n = N to
+%   apprixmate.
 %
-% # Generalized Continued Fraction (GCF) (3 + ...)
-%
-% # GCF (4 / ...)
-%
+% # Generalized Continued Fraction (GCF) [3 + ...] & [4 / ...]
+%   These are implementations of the patterned generalized continued 
+%   fractions provided in [1].
 %
 %INPUTS
 %   N <1x1 DOUBLE> denoting the number of terms or iterations to use for in

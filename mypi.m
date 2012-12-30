@@ -1,5 +1,84 @@
 function [est,t,name] = mypi(N)
-if ~exist('N','var'), N = 20; end
+%MYPI compares several computational methods for estimating pi
+%
+%USAGE
+%   mypi uses 20 terms or iterations of variety of computation methods to
+%   estimate pi to demonstrate their convergence properties and prints the
+%   results to the screen.
+%
+%   mypi(N) uses N terms or iterations instead of the default, 20.
+%
+%   ESTIMATE = mypi(N) returns a vector of estimates of pi.
+%
+%   [ESTIMATE,TIMEELAPSED] = mypi(N) additionally returns the a vector of 
+%   time required to arrive at the returned estimates.
+%
+%   [ESTIMATE,TIMEELAPSED,METHODNAME] = mypi(N) additionally returns a cell
+%   array of the names of the methods uses to arrive at the returned
+%   estimates.
+%
+%COMPUTATIONAL METHODS
+% 
+% # Grid Area
+%   By creating an N-gridded square of side length 2 centered at the origin 
+%   and computing each grid vertex's distance from the origin, we know the 
+%   total number of vertices that are inside the area of the circle, and we
+%   can do a Riemann?Stieltjes integral approximation to the area of the 
+%   circle using the constructed grid size.
+% 
+% # Monte Carlo (MC) Area
+%   By selecting N random points inside [0,1]x[0,1] and computing their 
+%   distance to the origin, we can find the fraction of points that are
+%   inside that quarter of the unit circle.  This four times this fraction
+%   gives us an estimate of the area of the circle, which, as constructed, 
+%   is pi.
+%
+% # Perimeter
+%   By creating a 2N-gon all of whose vertices are along the circumference
+%   of a circle of radius one, we can compute exactly its perimiter which
+%   will approximate that of the circumscribing circle, which is 2pi.
+%
+% # Zeta(2)
+%   Zeta(s) is given by:
+%                            inf
+%                           -----
+%                           \      1 /
+%                           /       / n^s
+%                           -----
+%                           n = 1
+%   Zeta(2) = pi^2/6, so we can truncate this series at n = N to
+%   approximate.
+%
+% # Zeta(4)
+%
+% # Zeta(10)
+%
+% # Generalized Continued Fraction (GCF) (3 + ...)
+%
+% # GCF (4 / ...)
+%
+%
+%INPUTS
+%   N <1x1 DOUBLE> denoting the number of terms or iterations to use for in
+%   the M utilizied computational methods.
+%
+%OUTPUTS
+%   ESTIMATE <Mx1 DOUBLE> denoting the estimates arrived at by the M
+%   utilized computational methods.
+%
+%   TIMEELAPSED <Mx1 DOUBLE> denoting the time elpased during each of the M
+%   utilized computational methods.
+%
+%   METHODNAME <Mx1 CELL ARRAY of STRINGS> denoting the name of each of the
+%   utilized computational methods.
+%
+%REFERENCES
+%   [1] http://en.wikipedia.org/wiki/Approximations_of_%CF%80
+%
+% See also
+%   pi
+
+if nargin < 1, N = 20; end
 est = [];
 t = [];
 name = {};

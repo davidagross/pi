@@ -35,12 +35,14 @@ COMPUTATIONAL METHODS
 
 * Zeta(2)
    Zeta(s) is given by:
-                            inf
-                           -----
-                           \      1 /
-                           /       / n^s
-                           -----
-                           n = 1
+```                            
+                   inf
+                  -----
+                  \      1 /
+     zeta(s)  =   /       / n^s
+                  -----
+                  n = 1
+```
    Zeta(2) = pi^2/6, so we can truncate this series at n = N to
    approximate.
 
